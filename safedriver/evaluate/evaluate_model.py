@@ -99,7 +99,7 @@ if (args.run_id is not None):
 if (run_id == 'amlcompute'):
     run_id = run.parent.id
 model_name = args.model_name
-metric_eval = "mse"
+metric_eval = "auc"
 
 allow_run_cancel = args.allow_run_cancel
 # Parameterize the matrices on which the models should be compared
@@ -112,24 +112,24 @@ try:
         model_name, tag_name, exp.name, ws)
 
     if (model is not None):
-        production_model_mse = 10000
+        production_model_auc = 10000
         if (metric_eval in model.tags):
-            production_model_mse = float(model.tags[metric_eval])
-        new_model_mse = float(run.parent.get_metrics().get(metric_eval))
-        if (production_model_mse is None or new_model_mse is None):
+            production_model_auc = float(model.tags[metric_eval])
+        new_model_auc = float(run.parent.get_metrics().get(metric_eval))
+        if (production_model_auc is None or new_model_auc is None):
             print("Unable to find", metric_eval, "metrics, "
                   "exiting evaluation")
             if((allow_run_cancel).lower() == 'true'):
                 run.parent.cancel()
         else:
             print(
-                "Current Production model mse: {}, "
-                "New trained model mse: {}".format(
-                    production_model_mse, new_model_mse
+                "Current Production model auc: {}, "
+                "New trained model auc: {}".format(
+                    production_model_auc, new_model_auc
                 )
             )
 
-        if (new_model_mse < production_model_mse):
+        if (new_model_auc < production_model_auc):
             print("New trained model performs better, "
                   "thus it should be registered")
         else:

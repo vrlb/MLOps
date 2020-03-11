@@ -12,7 +12,7 @@ trigger:
 
   paths:
     include:
-    - environment_setup/Dockerfile
+    - c4-environment_setup/Dockerfile
 
 variables:
   containerRegistry: $[coalesce(variables['acrServiceConnection'], 'acrconnection')]
@@ -29,4 +29,4 @@ steps:
        $(Build.BuildNumber)
        latest
       buildContext: '$(Build.SourcesDirectory)' 
-      dockerFile: '$(Build.SourcesDirectory)/environment_setup/Dockerfile'
+      dockerFile: '$(Build.SourcesDirectory)/c4-environment_setup/Dockerfile'

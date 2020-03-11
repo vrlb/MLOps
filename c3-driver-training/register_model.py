@@ -14,7 +14,7 @@ run = Run.get_context()
 
 # Load the model
 print("Loading model from " + model_folder)
-model_file = model_folder + "/driver_model.pkl"
+model_file = model_folder + "/safedriver_model.pkl"
 model = joblib.load(model_file)
 
 Model.register(workspace=run.experiment.workspace,

@@ -14,8 +14,8 @@ trigger:
     include:
     - safedriver/
     - ml_service/pipelines/safedriver_build_train_pipeline.py
-    - ml_service/pipelines/safedriver_build_train_pipeline_with_r.py
-    - ml_service/pipelines/safedriver_build_train_pipeline_with_r_on_dbricks.py
+    # - ml_service/pipelines/safedriver_build_train_pipeline_with_r.py
+    # - ml_service/pipelines/safedriver_build_train_pipeline_with_r_on_dbricks.py
 
 variables:
 - template: safedriver-variables-template.yml

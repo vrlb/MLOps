@@ -42,7 +42,7 @@ run.log('AUC', model_metrics["auc"])
 
 # Save the trained model to the output folder
 os.makedirs(output_folder, exist_ok=True)
-output_path = output_folder + "/driver_model.pkl"
+output_path = output_folder + "/safedriver_model.pkl"
 joblib.dump(value=model, filename=output_path)
 
 run.complete()
