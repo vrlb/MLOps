@@ -1,11 +1,12 @@
 # Import libraries
 import argparse
 import joblib
-from azureml.core import Workspace, Model, Run
+from azureml.core import Model, Run
 
 # Get parameters
 parser = argparse.ArgumentParser()
-parser.add_argument('--model_folder', type=str, dest='model_folder', default="driver_model", help='model location')
+parser.add_argument('--model_folder', type=str, dest='model_folder',
+                    default="driver_model", help='model location')
 args = parser.parse_args()
 model_folder = args.model_folder
 
@@ -18,8 +19,8 @@ model_file = model_folder + "/safedriver_model.pkl"
 model = joblib.load(model_file)
 
 Model.register(workspace=run.experiment.workspace,
-               model_path = model_file,
-               model_name = 'driver_model',
-               tags={'Training context':'Pipeline'})
+               model_path=model_file,
+               model_name='driver_model',
+               tags={'Training context': 'Pipeline'})
 
 run.complete()

@@ -24,11 +24,12 @@ ARISING IN ANY WAY OUT OF THE USE OF THE SOFTWARE CODE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 """
 
-import os
 import pandas as pd
+import numpy as np
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
 import lightgbm
+
 
 def split_data(data_df):
     """Split a dataframe into training and validation datasets"""
@@ -58,7 +59,8 @@ def get_model_metrics(model, data):
     """Construct a dictionary of metrics for the model"""
     validation_data = data[1]
     predictions = model.predict(validation_data.data)
-    fpr, tpr, thresholds = metrics.roc_curve(validation_data.label, predictions)
+    fpr, tpr, thresholds = metrics.roc_curve(validation_data.label,
+                                             predictions)
     model_metrics = {"auc": (metrics.auc(fpr, tpr))}
     return model_metrics
 
