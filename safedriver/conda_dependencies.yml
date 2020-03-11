@@ -18,7 +18,7 @@ name: safedriver_training_env
 dependencies:
   # The python interpreter version.
   # Currently Azure ML Workbench only supports 3.5.2 and later.
-  - python=3.6.2
+  - python=3.7.5
   # Required by azureml-defaults, installed separately through Conda to
   # get a prebuilt version and not require build tools for the install.
   - psutil=5.6 #latest
@@ -42,5 +42,3 @@ dependencies:
       - azure-storage-blob
       - azureml-dataprep
 
-    channels:
-      - conda-forge
