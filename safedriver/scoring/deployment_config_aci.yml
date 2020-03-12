@@ -1,5 +1,5 @@
 computeType: ACI
 containerResourceRequirements:
-  cpu: 2
+  cpu: 1
   memoryInGB: 4
   location: southeastasia
